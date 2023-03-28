@@ -1,16 +1,11 @@
 import * as functions from "firebase-functions";
-import * as admin from "firebase-admin";
+import * as express from "express";
+import {addUserHistoryEyes} from "./userController";
 
-admin.initializeApp();
+const app = express();
 
-export const helloWorld = functions.https.onRequest(
-  async (request, response) => {
-    functions.logger.info("Hello logs!", {structuredData: true});
+app.get("/", (req, res) => res.status(200).send("Hello World!"));
 
-    const db = await admin.database();
+app.post("/user/history/eyes", addUserHistoryEyes);
 
-    const snapShot = await db.ref("users").get();
-
-    response.json({message: "Hello from Firebase!", data: snapShot});
-  }
-);
+export const helloWorld = functions.https.onRequest(app);
