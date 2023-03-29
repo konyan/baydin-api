@@ -1,0 +1,17 @@
+GET http://127.0.0.1:5001/donation-887a7/us-central1/app/users HTTP/1.1
+
+###
+
+POST http://127.0.0.1:5001/donation-887a7/us-central1/app/users/history_eyes HTTP/1.1
+content-type: application/json
+
+{
+    "user_id": "123",
+    "is_anonymous" : true,
+    "history_eyes":{
+      "answer_position" :1,
+      "question_id" : "1",
+      "question_title" : "HLELO",
+      "click_share_btn" : true,
+    }
+}
